@@ -32,12 +32,12 @@
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
-        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3e4b6acd0658620870caefedd8aa7a43dffa553a\\output\\res\\anim\\design_fab_in.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3e4b6acd0658620870caefedd8aa7a43dffa553a\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
+        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3e4b6acd0658620870caefedd8aa7a43dffa553a\\output\\res\\anim\\design_fab_in.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",

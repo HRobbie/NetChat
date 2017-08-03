@@ -6,6 +6,8 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.hrobbie.netchat.R;
+import com.hrobbie.netchat.session.NimDemoLocationProvider;
+import com.hrobbie.netchat.session.SessionHelper;
 import com.hrobbie.netchat.ui.WelcomeActivity;
 import com.hrobbie.netchat.utills.SystemUtil;
 import com.hrobbie.netchat.utills.cache.DemoCache;
@@ -54,13 +56,13 @@ public class MyApplication extends Application {
         // 可选定制项
         // 注册定位信息提供者类（可选）,如果需要发送地理位置消息，必须提供。
         // demo中使用高德地图实现了该提供者，开发者可以根据自身需求，选用高德，百度，google等任意第三方地图和定位SDK。
-//        NimUIKit.setLocationProvider(new NimDemoLocationProvider());
+        NimUIKit.setLocationProvider(new NimDemoLocationProvider());
 
         // 会话窗口的定制: 示例代码可详见demo源码中的SessionHelper类。
         // 1.注册自定义消息附件解析器（可选）
         // 2.注册各种扩展消息类型的显示ViewHolder（可选）
         // 3.设置会话中点击事件响应处理（一般需要）
-//        SessionHelper.init();
+        SessionHelper.init();
 
         // 通讯录列表定制：示例代码可详见demo源码中的ContactHelper类。
         // 1.定制通讯录列表中点击事响应处理（一般需要，UIKit 提供默认实现为点击进入聊天界面)
