@@ -84,12 +84,12 @@
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\color\\switch_thumb_material_dark.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",

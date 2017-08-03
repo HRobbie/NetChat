@@ -1,31 +1,31 @@
 [
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_seekbar_thumb_material.xml",
-        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\design_fab_background.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3e4b6acd0658620870caefedd8aa7a43dffa553a\\output\\res\\drawable\\design_fab_background.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_seekbar_thumb_material.xml",
+        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\nim_contact_list_item_selecter.xml",
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable\\nim_contact_list_item_selecter.xml"
     },
     {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\design_snackbar_background.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3e4b6acd0658620870caefedd8aa7a43dffa553a\\output\\res\\drawable\\design_snackbar_background.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\nim_emoji_item_selector.xml",
-        "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable\\nim_emoji_item_selector.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_edit_text_material.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\nim_emoji_item_selector.xml",
+        "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable\\nim_emoji_item_selector.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\nim_align_bottom_green_btn_selector.xml",
@@ -172,12 +172,12 @@
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_text_cursor_material.xml",
-        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_text_cursor_material.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_clear_material.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_text_cursor_material.xml",
+        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\nim_easy_edit_text_dialog_bg.xml",
@@ -220,12 +220,12 @@
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable\\touch_bg.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ratingbar_small_material.xml",
-        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\nim_team_create_btn_selector.xml",
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable\\nim_team_create_btn_selector.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_btn_colored_material.xml",

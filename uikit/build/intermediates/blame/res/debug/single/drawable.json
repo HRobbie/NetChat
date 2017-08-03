@@ -1,11 +1,11 @@
 [
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_progress_small_white.xml",
-        "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_progress_small_white.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_progress_bar_background.xml",
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_progress_bar_background.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_progress_small_white.xml",
+        "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_progress_small_white.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_message_button_bottom_text_selector.xml",
@@ -40,12 +40,12 @@
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_audio_animation_list_left.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_bg_edittext_rectangle.xml",
-        "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_bg_edittext_rectangle.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_bg_edittext_rectangle_normal.xml",
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_bg_edittext_rectangle_normal.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_bg_edittext_rectangle.xml",
+        "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_bg_edittext_rectangle.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
@@ -192,12 +192,12 @@
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_progress_bar_foreground.xml"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_message_item_left_selector.xml",
-        "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_message_item_left_selector.xml"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
         "source": "C:\\Users\\HRobbie\\.android\\build-cache\\3a079c2197a58c7afa17bb66b75e6c86fc566596\\output\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_message_item_left_selector.xml",
+        "source": "E:\\Android\\Android10\\NetChat\\uikit\\res\\drawable\\nim_message_item_left_selector.xml"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\debug\\drawable\\nim_gray_edit_text_bg.xml",
