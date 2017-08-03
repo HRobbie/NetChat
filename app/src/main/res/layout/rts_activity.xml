@@ -143,7 +143,7 @@
             android:layout_above="@id/operate_layout"
             android:background="@color/grey">
 
-            <com.netease.nim.demo.rts.doodle.DoodleView
+            <com.hrobbie.netchat.rts.doodle.DoodleView
                 android:id="@+id/doodle_view"
                 android:layout_width="600px"
                 android:layout_height="600px"

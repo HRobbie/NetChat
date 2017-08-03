@@ -1,11 +1,14 @@
 package com.hrobbie.netchat.config;
 
 import android.app.Application;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Environment;
+import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
 import com.hrobbie.netchat.R;
+import com.hrobbie.netchat.contact.ContactHelper;
 import com.hrobbie.netchat.session.NimDemoLocationProvider;
 import com.hrobbie.netchat.session.SessionHelper;
 import com.hrobbie.netchat.ui.WelcomeActivity;
@@ -14,7 +17,6 @@ import com.hrobbie.netchat.utills.cache.DemoCache;
 import com.hrobbie.netchat.utills.cache.Preferences;
 import com.hrobbie.netchat.utills.cache.UserPreferences;
 import com.netease.nim.uikit.NimUIKit;
-import com.netease.nim.uikit.contact.core.util.ContactHelper;
 import com.netease.nim.uikit.custom.DefaultUserInfoProvider;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderThumbBase;
 import com.netease.nimlib.sdk.NIMClient;
@@ -30,6 +32,11 @@ import com.netease.nimlib.sdk.msg.model.IMMessage;
  */
 
 public class MyApplication extends Application {
+
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        MultiDex.install(this);
+    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -66,7 +73,7 @@ public class MyApplication extends Application {
 
         // 通讯录列表定制：示例代码可详见demo源码中的ContactHelper类。
         // 1.定制通讯录列表中点击事响应处理（一般需要，UIKit 提供默认实现为点击进入聊天界面)
-//        ContactHelper.init();
+        ContactHelper.init();
     }
 
     private LoginInfo getLoginInfo() {

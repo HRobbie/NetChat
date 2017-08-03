@@ -13,6 +13,7 @@ import com.hrobbie.netchat.adapter.TabFragmentAdapter;
 import com.hrobbie.netchat.ui.BaseActivity;
 import com.hrobbie.netchat.ui.fragment.ContactListFragment;
 import com.hrobbie.netchat.ui.fragment.SessionListFragment;
+import com.netease.nim.uikit.common.activity.UI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends UI {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
