@@ -204,12 +204,12 @@
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\nim_message_plus_photo_pressed.png"
     },
     {
-        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\nim_slide_toggle.png",
-        "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\nim_slide_toggle.png"
-    },
-    {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\nim_messages_list_empty_bg.png",
         "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\nim_messages_list_empty_bg.png"
+    },
+    {
+        "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\nim_slide_toggle.png",
+        "source": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\nim_slide_toggle.png"
     },
     {
         "merged": "E:\\Android\\Android10\\NetChat\\uikit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png",

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_layout"
+    android:layout_width="match_parent"
+    android:layout_height="53dp"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:baselineAligned="false"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:button="@null"
+            android:background="@null"
+            android:checked="true"
+            android:clickable="false"
+            android:drawablePadding="0dp"
+            android:drawableTop="@drawable/selector_tab_home"
+            android:gravity="center"
+            android:text="会话"
+            android:textColor="@drawable/tab_text_selector"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignRight="@id/rb_1"
+            android:layout_alignTop="@id/rb_1"
+            android:layout_marginTop="-1dp"
+            android:layout_marginRight="-2dp"
+            android:layout_gravity="right"
+            android:background="@drawable/msg_num_shape"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:gravity="center"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false"
+            android:drawablePadding="0dp"
+            android:drawableTop="@drawable/selector_tab_contact"
+            android:gravity="center"
+            android:text="通信录"
+            android:textColor="@drawable/tab_text_selector"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignRight="@id/rb_2"
+            android:layout_alignTop="@id/rb_2"
+            android:layout_marginTop="-1dp"
+            android:layout_marginRight="-2dp"
+            android:layout_gravity="right"
+            android:background="@drawable/msg_num_shape"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            />
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
