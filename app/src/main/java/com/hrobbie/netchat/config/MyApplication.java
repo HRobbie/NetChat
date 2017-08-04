@@ -1,31 +1,53 @@
 package com.hrobbie.netchat.config;
 
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Environment;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.hrobbie.netchat.R;
+import com.hrobbie.netchat.avchat.AVChatProfile;
+import com.hrobbie.netchat.avchat.activity.AVChatActivity;
+import com.hrobbie.netchat.avchat.receiver.PhoneCallStateObserver;
 import com.hrobbie.netchat.contact.ContactHelper;
+import com.hrobbie.netchat.event.DemoOnlineStateContentProvider;
+import com.hrobbie.netchat.event.OnlineStateEventManager;
+import com.hrobbie.netchat.rts.activity.RTSActivity;
 import com.hrobbie.netchat.session.NimDemoLocationProvider;
 import com.hrobbie.netchat.session.SessionHelper;
+import com.hrobbie.netchat.team.TeamAVChatHelper;
 import com.hrobbie.netchat.ui.WelcomeActivity;
 import com.hrobbie.netchat.utills.SystemUtil;
 import com.hrobbie.netchat.utills.cache.DemoCache;
 import com.hrobbie.netchat.utills.cache.Preferences;
 import com.hrobbie.netchat.utills.cache.UserPreferences;
 import com.netease.nim.uikit.NimUIKit;
+import com.netease.nim.uikit.common.util.log.LogUtil;
+import com.netease.nim.uikit.contact.core.query.PinYin;
 import com.netease.nim.uikit.custom.DefaultUserInfoProvider;
 import com.netease.nim.uikit.session.viewholder.MsgViewHolderThumbBase;
 import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.NimStrings;
+import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.SDKOptions;
 import com.netease.nimlib.sdk.ServerAddresses;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 import com.netease.nimlib.sdk.auth.LoginInfo;
+import com.netease.nimlib.sdk.avchat.AVChatManager;
+import com.netease.nimlib.sdk.avchat.constant.AVChatControlCommand;
+import com.netease.nimlib.sdk.avchat.model.AVChatData;
 import com.netease.nimlib.sdk.msg.MessageNotifierCustomization;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
+import com.netease.nimlib.sdk.rts.RTSManager;
+import com.netease.nimlib.sdk.rts.model.RTSData;
+
+import static me.everything.android.ui.overscroll.OverScrollBounceEffectDecoratorBase.TAG;
 
 /**
  * Created by HRobbie on 2017/8/2.
@@ -43,12 +65,51 @@ public class MyApplication extends Application {
         DemoCache.setContext(this);
         // 初始化云信SDK
         NIMClient.init(this, getLoginInfo(), getOptions());
-
+        // init pinyin
+        PinYin.init(this);
+        PinYin.validate();
         if (inMainProcess()) {
             // 在主进程中初始化UI组件，判断所属进程方法请参见demo源码。
             initUiKit();
+
+            // 初始化消息提醒
+            NIMClient.toggleNotification(UserPreferences.getNotificationToggle());
+
+
+            // 注册网络通话来电
+            registerAVChatIncomingCallObserver(true);
+
+            // 注册白板会话
+            registerRTSIncomingObserver(true);
+
+            // 注册语言变化监听
+            registerLocaleReceiver(true);
+
+            OnlineStateEventManager.init();
         }
     }
+
+    private void registerAVChatIncomingCallObserver(boolean register) {
+        AVChatManager.getInstance().observeIncomingCall(new Observer<AVChatData>() {
+            @Override
+            public void onEvent(AVChatData data) {
+                String extra = data.getExtra();
+                Log.e("Extra", "Extra Message->" + extra);
+                if (PhoneCallStateObserver.getInstance().getPhoneCallState() != PhoneCallStateObserver.PhoneCallStateEnum.IDLE
+                        || AVChatProfile.getInstance().isAVChatting()
+                        || TeamAVChatHelper.sharedInstance().isTeamAVChatting()
+                        || AVChatManager.getInstance().getCurrentChatId() != 0) {
+                    LogUtil.i(TAG, "reject incoming call data =" + data.toString() + " as local phone is not idle");
+                    AVChatManager.getInstance().sendControlCommand(data.getChatId(), AVChatControlCommand.BUSY, null);
+                    return;
+                }
+                // 有网络来电打开AVChatActivity
+                AVChatProfile.getInstance().setAVChatting(true);
+                AVChatProfile.getInstance().launchActivity(data, AVChatActivity.FROM_BROADCASTRECEIVER);
+            }
+        }, register);
+    }
+
     public boolean inMainProcess() {
         String packageName = getPackageName();
         String processName = SystemUtil.getProcessName(this);
@@ -74,6 +135,8 @@ public class MyApplication extends Application {
         // 通讯录列表定制：示例代码可详见demo源码中的ContactHelper类。
         // 1.定制通讯录列表中点击事响应处理（一般需要，UIKit 提供默认实现为点击进入聊天界面)
         ContactHelper.init();
+
+        NimUIKit.setOnlineStateContentProvider(new DemoOnlineStateContentProvider());
     }
 
     private LoginInfo getLoginInfo() {
@@ -186,4 +249,49 @@ public class MyApplication extends Application {
             return null; // 采用SDK默认文案
         }
     };
+
+    private void registerRTSIncomingObserver(boolean register) {
+        RTSManager.getInstance().observeIncomingSession(new Observer<RTSData>() {
+            @Override
+            public void onEvent(RTSData rtsData) {
+                RTSActivity.incomingSession(DemoCache.getContext(), rtsData, RTSActivity.FROM_BROADCAST_RECEIVER);
+            }
+        }, register);
+    }
+
+
+    private BroadcastReceiver localeReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(Intent.ACTION_LOCALE_CHANGED)) {
+                updateLocale();
+            }
+        }
+    };
+
+    private void updateLocale() {
+        NimStrings strings = new NimStrings();
+        strings.status_bar_multi_messages_incoming = getString(R.string.nim_status_bar_multi_messages_incoming);
+        strings.status_bar_image_message = getString(R.string.nim_status_bar_image_message);
+        strings.status_bar_audio_message = getString(R.string.nim_status_bar_audio_message);
+        strings.status_bar_custom_message = getString(R.string.nim_status_bar_custom_message);
+        strings.status_bar_file_message = getString(R.string.nim_status_bar_file_message);
+        strings.status_bar_location_message = getString(R.string.nim_status_bar_location_message);
+        strings.status_bar_notification_message = getString(R.string.nim_status_bar_notification_message);
+        strings.status_bar_ticker_text = getString(R.string.nim_status_bar_ticker_text);
+        strings.status_bar_unsupported_message = getString(R.string.nim_status_bar_unsupported_message);
+        strings.status_bar_video_message = getString(R.string.nim_status_bar_video_message);
+        strings.status_bar_hidden_message_content = getString(R.string.nim_status_bar_hidden_msg_content);
+        NIMClient.updateStrings(strings);
+    }
+
+    private void registerLocaleReceiver(boolean register) {
+        if (register) {
+            updateLocale();
+            IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
+            registerReceiver(localeReceiver, filter);
+        } else {
+            unregisterReceiver(localeReceiver);
+        }
+    }
 }

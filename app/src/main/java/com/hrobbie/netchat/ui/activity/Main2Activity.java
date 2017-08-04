@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.hrobbie.netchat.R;
 import com.hrobbie.netchat.adapter.TabFragmentAdapter;
+import com.hrobbie.netchat.helper.SystemMessageUnreadManager;
 import com.hrobbie.netchat.ui.fragment.ContactListFragment;
 import com.hrobbie.netchat.ui.fragment.SessionListFragment;
 import com.hrobbie.netchat.ui.reminder.ReminderItem;
@@ -20,7 +21,9 @@ import com.netease.nim.uikit.common.ui.drop.DropCover;
 import com.netease.nim.uikit.common.ui.drop.DropManager;
 import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.msg.MsgService;
+import com.netease.nimlib.sdk.msg.SystemMessageObserver;
 import com.netease.nimlib.sdk.msg.SystemMessageService;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.msg.model.RecentContact;
@@ -60,8 +63,8 @@ public class Main2Activity extends UI implements ViewPager.OnPageChangeListener,
         setupPager();
         setupTabs();
         registerMsgUnreadInfoObserver(true);
-//        registerSystemMessageObservers(true);
-//        requestSystemMessageUnreadCount();
+        registerSystemMessageObservers(true);
+        requestSystemMessageUnreadCount();
         initUnreadCover();
     }
     /**
@@ -73,6 +76,33 @@ public class Main2Activity extends UI implements ViewPager.OnPageChangeListener,
         } else {
             ReminderManager.getInstance().unregisterUnreadNumChangedCallback(this);
         }
+    }
+
+    /**
+     * 注册/注销系统消息未读数变化
+     *
+     * @param register
+     */
+    private void registerSystemMessageObservers(boolean register) {
+        NIMClient.getService(SystemMessageObserver.class).observeUnreadCountChange(sysMsgUnreadCountChangedObserver,
+                register);
+    }
+
+    private Observer<Integer> sysMsgUnreadCountChangedObserver = new Observer<Integer>() {
+        @Override
+        public void onEvent(Integer unreadCount) {
+            SystemMessageUnreadManager.getInstance().setSysMsgUnreadCount(unreadCount);
+            ReminderManager.getInstance().updateContactUnreadNum(unreadCount);
+        }
+    };
+
+    /**
+     * 查询系统消息未读数
+     */
+    private void requestSystemMessageUnreadCount() {
+        int unread = NIMClient.getService(SystemMessageService.class).querySystemMessageUnreadCountBlock();
+        SystemMessageUnreadManager.getInstance().setSysMsgUnreadCount(unread);
+        ReminderManager.getInstance().updateContactUnreadNum(unread);
     }
     /**
      * 设置viewPager
@@ -235,6 +265,7 @@ public class Main2Activity extends UI implements ViewPager.OnPageChangeListener,
     protected void onDestroy() {
         pager.removeOnPageChangeListener(this);
         registerMsgUnreadInfoObserver(false);
+        registerSystemMessageObservers(false);
         super.onDestroy();
     }
 
