@@ -435,6 +435,6 @@ public class OnlineStateEventManager {
      */
     public static boolean enableOnlineStateEvent() {
         String packageName = DemoCache.getContext().getPackageName();
-        return enable = (packageName != null && packageName.equals("com.netease.nim.demo"));
+        return enable = (packageName != null && packageName.equals("com.hrobbie.netchat"));
     }
 }
