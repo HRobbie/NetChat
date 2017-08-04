@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.hrobbie.netchat.MainActivity;
 import com.hrobbie.netchat.R;
 import com.hrobbie.netchat.ui.activity.Main2Activity;
 import com.hrobbie.netchat.ui.login.LoginActivity;

@@ -35,8 +35,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hrobbie.netchat.MainActivity;
 import com.hrobbie.netchat.R;
+import com.hrobbie.netchat.ui.activity.Main2Activity;
 import com.hrobbie.netchat.utills.cache.DemoCache;
 import com.hrobbie.netchat.utills.cache.Preferences;
 import com.hrobbie.netchat.utills.cache.UserPreferences;
@@ -374,7 +374,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 // 进入主界面
 //                MainActivity.start(LoginActivity.this, null);
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, Main2Activity.class));
                 finish();
             }
 
