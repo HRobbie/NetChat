@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.hrobbie.netchat.MainActivity;
 import com.hrobbie.netchat.R;
+import com.hrobbie.netchat.ui.activity.Main2Activity;
 import com.hrobbie.netchat.ui.login.LoginActivity;
 import com.hrobbie.netchat.utills.cache.Preferences;
 
@@ -23,7 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void run() {
               if(canAutoLogin()){
-                  startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                  startActivity(new Intent(WelcomeActivity.this, Main2Activity.class));
                   finish();
               }  else{
                   startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));

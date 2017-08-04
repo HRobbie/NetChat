@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -61,20 +60,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".ui.BaseActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
-        <activity android:name=".ui.WelcomeActivity" >
+            android:label="@string/title_activity_login" />
+        <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+        </activity>
 
         <!-- 查看阅后即焚 -->
         <activity
@@ -87,7 +84,6 @@
             android:name=".session.activity.FileDownloadActivity"
             android:configChanges="keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".session.activity.MessageHistoryActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -122,56 +118,48 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-
         <activity
             android:name=".team.activity.AdvancedTeamSearchActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-
         <activity
             android:name=".team.activity.AdvancedTeamJoinActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-
         <activity
             android:name=".teamavchat.activity.TeamAVChatActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".contact.activity.AddFriendActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-
         <activity
             android:name=".contact.activity.BlackListActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-
         <activity
             android:name=".contact.activity.UserProfileActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-
         <activity
             android:name=".contact.activity.UserProfileSettingActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-
         <activity
             android:name=".contact.activity.UserProfileEditItemActivity"
             android:configChanges="orientation"
@@ -227,7 +215,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <!--
              APP key, 可以在这里设置，也可以在 SDKOptions 中提供。
             如果 SDKOptions 中提供了，取 SDKOptions 中的值。
@@ -240,10 +228,10 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="ca08c2888c3841b712bf7071d2f391f7" />
+
         <uses-library
             android:name="com.google.android.maps"
             android:required="false" />
-
 
         <!-- 声明网易云通信后台服务，如需保持后台推送，使用独立进程效果会更好。 -->
         <service
@@ -302,7 +290,7 @@
             android:name="com.netease.cosine.target.receiver"
             android:value="com.netease.nimlib.service.NimReceiver" />
 
-
+        <activity android:name=".ui.activity.Main2Activity"></activity>
     </application>
 
 </manifest>
