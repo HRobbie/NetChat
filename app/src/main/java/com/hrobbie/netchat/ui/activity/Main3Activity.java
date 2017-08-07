@@ -1,5 +1,6 @@
 package com.hrobbie.netchat.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,24 +23,23 @@ import com.hrobbie.netchat.helper.SystemMessageUnreadManager;
 import com.hrobbie.netchat.team.activity.AdvancedTeamSearchActivity;
 import com.hrobbie.netchat.ui.fragment.BaseFragment;
 import com.hrobbie.netchat.ui.fragment.ContactListFragment;
+import com.hrobbie.netchat.ui.fragment.MeFragment;
 import com.hrobbie.netchat.ui.fragment.SessionListFragment;
 import com.hrobbie.netchat.ui.reminder.ReminderItem;
 import com.hrobbie.netchat.ui.reminder.ReminderManager;
 import com.hrobbie.netchat.utills.DensityUtil;
+import com.hrobbie.netchat.utills.cache.UserPreferences;
 import com.netease.nim.uikit.NimUIKit;
 import com.netease.nim.uikit.common.activity.UI;
-import com.netease.nim.uikit.common.ui.drop.DropCover;
-import com.netease.nim.uikit.common.ui.drop.DropManager;
-import com.netease.nim.uikit.common.util.log.LogUtil;
 import com.netease.nim.uikit.contact_selector.activity.ContactSelectActivity;
 import com.netease.nim.uikit.team.helper.TeamHelper;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
+import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 import com.netease.nimlib.sdk.msg.MsgService;
 import com.netease.nimlib.sdk.msg.SystemMessageObserver;
 import com.netease.nimlib.sdk.msg.SystemMessageService;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
-import com.netease.nimlib.sdk.msg.model.RecentContact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +71,12 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
     RelativeLayout rl2;
     @BindView(R.id.tab_layout)
     LinearLayout tabLayout;
+    @BindView(R.id.rb_3)
+    RadioButton rb3;
+    @BindView(R.id.tv_3)
+    TextView tv3;
+    @BindView(R.id.rl_3)
+    RelativeLayout rl3;
 
     private List<BaseFragment> fragments = new ArrayList<>();
     private Context mContext;
@@ -100,10 +106,11 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
 //        initUnreadCover();
 
     }
+
     private void initViewPager() {
         //给viewpager设置适配器
         vpMain.setAdapter(new ViewPagerFragmentAdapter(getSupportFragmentManager(), fragments));
-        vpMain.setOffscreenPageLimit(fragments.size()-1);
+        vpMain.setOffscreenPageLimit(fragments.size() - 1);
         vpMain.addOnPageChangeListener(this);
     }
 
@@ -112,9 +119,10 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
 
         fragments.add(new SessionListFragment());
         fragments.add(new ContactListFragment());
+        fragments.add(new MeFragment());
 
         Intent intent = getIntent();
-        index=intent.getIntExtra("Main",0);
+        index = intent.getIntExtra("Main", 0);
 
 
     }
@@ -124,19 +132,25 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
         setTitle(R.string.app_name);
 
         vpMain.setCurrentItem(index);
-        messageTips(-1,tv1);//-2:表示新消息用红点的方式显示,
-        messageTips(-1,tv2);//-2:表示新消息用红点的方式显示
+        messageTips(-1, tv1);//-2:表示新消息用红点的方式显示,
+        messageTips(-1, tv2);//-2:表示新消息用红点的方式显示
+        messageTips(-1, tv3);//-2:表示新消息用红点的方式显示
     }
-    @OnClick({R.id.rl_1, R.id.rl_2})
+
+    @OnClick({R.id.rl_1, R.id.rl_2,R.id.rl_3})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_1:
                 changeRadioButton(0);
-                vpMain.setCurrentItem(0,false);
+                vpMain.setCurrentItem(0, false);
                 break;
             case R.id.rl_2:
                 changeRadioButton(1);
-                vpMain.setCurrentItem(1,false);
+                vpMain.setCurrentItem(1, false);
+                break;
+            case R.id.rl_3:
+                changeRadioButton(2);
+                vpMain.setCurrentItem(2, false);
                 break;
         }
     }
@@ -186,15 +200,17 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
             case 0:
                 rb1.setChecked(true);
                 rb2.setChecked(false);
-
+                rb3.setChecked(false);
                 break;
             case 1:
                 rb1.setChecked(false);
                 rb2.setChecked(true);
+                rb3.setChecked(false);
                 break;
             case 2:
                 rb1.setChecked(false);
                 rb2.setChecked(false);
+                rb3.setChecked(true);
                 break;
         }
     }
@@ -216,6 +232,14 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
      */
     public void updateTwo(int num) {
         messageTips(num, tv2);
+    }
+    /**
+     * 在ThreeFragment中更新，底部导航栏的数字
+     *
+     * @param num
+     */
+    public void updateThree(int num) {
+        messageTips(num, tv3);
     }
 
 
@@ -290,7 +314,6 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
 //                    }
 //                });
 //    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -313,7 +336,7 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
     }
 
     private void enableMsgNotification(boolean enable) {
-        boolean msg = (vpMain.getCurrentItem() !=0);
+        boolean msg = (vpMain.getCurrentItem() != 0);
         if (enable | msg) {
             /**
              * 设置最近联系人的消息为已读
@@ -327,20 +350,21 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
             NIMClient.getService(MsgService.class).setChattingAccount(MsgService.MSG_CHATTING_ACCOUNT_ALL, SessionTypeEnum.None);
         }
     }
+
     @Override
     public void onUnreadNumChanged(ReminderItem item) {
-        switch (item.getId()){
+        switch (item.getId()) {
             case 0:
-                if(item.getUnread()<=0){
+                if (item.getUnread() <= 0) {
                     updateOne(-1);
-                }else{
+                } else {
                     updateOne(item.getUnread());
                 }
                 break;
             case 2:
-                if(item.getUnread()<=0){
+                if (item.getUnread() <= 0) {
                     updateTwo(-1);
-                }else{
+                } else {
                     updateTwo(item.getUnread());
                 }
                 break;
@@ -421,4 +445,43 @@ public class Main3Activity extends UI implements ReminderManager.UnreadNumChange
         }
         context.startActivity(intent);
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == Activity.RESULT_OK) {
+//            switch (requestCode) {
+//                case NoDisturbActivity.NO_DISTURB_REQ:
+//                    setNoDisturbTime(data);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//    }
+//
+//    /**
+//     * 设置免打扰时间
+//     *
+//     * @param data
+//     */
+//    private void setNoDisturbTime(Intent data) {
+//        boolean isChecked = data.getBooleanExtra(NoDisturbActivity.EXTRA_ISCHECKED, false);
+//        noDisturbTime = getString(R.string.setting_close);
+//        StatusBarNotificationConfig config = UserPreferences.getStatusConfig();
+//        if (isChecked) {
+//            config.downTimeBegin = data.getStringExtra(NoDisturbActivity.EXTRA_START_TIME);
+//            config.downTimeEnd = data.getStringExtra(NoDisturbActivity.EXTRA_END_TIME);
+//            noDisturbTime = String.format("%s到%s", config.downTimeBegin, config.downTimeEnd);
+//        } else {
+//            config.downTimeBegin = null;
+//            config.downTimeEnd = null;
+//        }
+//        disturbItem.setDetail(noDisturbTime);
+//        adapter.notifyDataSetChanged();
+//        UserPreferences.setDownTimeToggle(isChecked);
+//        config.downTimeToggle = isChecked;
+//        UserPreferences.setStatusConfig(config);
+//        NIMClient.updateStatusBarNotificationConfig(config);
+//    }
 }

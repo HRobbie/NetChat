@@ -73,7 +73,7 @@
             android:drawablePadding="0dp"
             android:drawableTop="@drawable/selector_tab_contact"
             android:gravity="center"
-            android:text="通信录"
+            android:text="联系人"
             android:textColor="@drawable/tab_text_selector"
             android:textSize="10sp" />
 
@@ -94,8 +94,47 @@
             android:textSize="10sp"
             />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:gravity="center"
+        >
 
+        <RadioButton
+            android:id="@+id/rb_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:button="@null"
+            android:clickable="false"
+            android:drawablePadding="0dp"
+            android:drawableTop="@drawable/selector_tab_me"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="@drawable/tab_text_selector"
+            android:textSize="10sp" />
 
-
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignRight="@id/rb_3"
+            android:layout_alignTop="@id/rb_3"
+            android:layout_marginTop="-1dp"
+            android:layout_marginRight="-2dp"
+            android:layout_gravity="right"
+            android:background="@drawable/msg_num_shape"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            />
+    </RelativeLayout>
 
 </LinearLayout>

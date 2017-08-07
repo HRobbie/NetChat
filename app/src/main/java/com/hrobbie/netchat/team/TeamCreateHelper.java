@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.hrobbie.netchat.MainActivity;
 import com.hrobbie.netchat.session.SessionHelper;
 import com.hrobbie.netchat.ui.activity.Main2Activity;
+import com.hrobbie.netchat.ui.activity.Main3Activity;
 import com.hrobbie.netchat.utills.cache.DemoCache;
 import com.netease.nim.uikit.common.ui.dialog.DialogMaker;
 import com.netease.nimlib.sdk.NIMClient;
@@ -55,7 +56,7 @@ public class TeamCreateHelper {
                         Toast.makeText(DemoCache.getContext(), com.netease.nim.uikit.R.string.create_team_success,
                                 Toast.LENGTH_SHORT).show();
                         if (isNeedBack) {
-                            SessionHelper.startTeamSession(context, team.getId(), Main2Activity.class, null); // 进入创建的群
+                            SessionHelper.startTeamSession(context, team.getId(), Main3Activity.class, null); // 进入创建的群
                         } else {
                             SessionHelper.startTeamSession(context, team.getId());
                         }
